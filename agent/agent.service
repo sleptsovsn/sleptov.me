@@ -1,0 +1,16 @@
+[Unit]
+Description=Home-lab Update Agent
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/agent/agent.py
+Environment=CONTROLLER=http://192.168.12.151:8000
+Environment=TOKEN=YOUR_TOKEN_HERE
+Environment=AGENT_ID=%H
+Environment=POLL_INTERVAL=20
+Environment=CHECK_INTERVAL=3600
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
